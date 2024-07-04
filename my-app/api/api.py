@@ -2,7 +2,7 @@
 from flask import Flask
 import datetime
  
-x = datetime.datetime.now()
+time = datetime.datetime.now()
  
 # Initializing flask app
 app = Flask(__name__)
@@ -14,10 +14,10 @@ def get_time():
  
     # Returning an api for showing in  reactjs
     return {
-        'Name':"geek", 
+        'Name':"Alec", 
         "Age":"22",
-        "Date":x, 
-        "programming":"python"
+        "Date":time, 
+        "programming":"React + Flask"
         }
  
      

@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { MyButton } from './components/MuiButtons';
 import { MyTextfield } from './components/MuiTextfield';
+import { Fetch } from './components/MuiFetch';
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         </div> */}
         <div>
           <MyButton />
-          <MyTextfield/>
+          <MyTextfield />
+          <Fetch/>
         </div>
       </header>
     </div>
