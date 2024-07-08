@@ -1,14 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
-import { MyButton } from './components/MuiButtons';
-import { MyTextfield } from './components/MuiTextfield';
-import { Fetch } from './components/MuiFetch';
+import AppNav from './components/Navbar';
+import SignIn from './components/SignIn';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SignUp from './components/SignUp';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" />
+      <BrowserRouter>
+        <AppNav/>
+        <Routes>
+          <Route path="/login" element={<SignIn />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
+        </Routes>
+      </BrowserRouter>
+      {/* <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -23,13 +31,10 @@ function App() {
         <div>
           <MyButton />
           <MyHeadings />
-        </div> */}
-        <div>
-          <MyButton />
-          <MyTextfield />
-          <Fetch/>
         </div>
-      </header>
+      </header> */}
+      {/* <AppNav />
+      <MyTextfield /> */}
     </div>
   );
 }
