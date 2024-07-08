@@ -61,6 +61,16 @@ export default function ResetPassword() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
                   margin="normal"
                   required
                   fullWidth
@@ -71,7 +81,6 @@ export default function ResetPassword() {
                   autoComplete="new-password"
                 />
               </Grid>
-              
               <Grid item xs={12}>
                 <TextField
                   margin="normal"
@@ -84,7 +93,6 @@ export default function ResetPassword() {
                   autoComplete="current-password"
                 />
               </Grid>
-
               <Grid item xs={12}>
                 <TextField
                   margin="normal"
