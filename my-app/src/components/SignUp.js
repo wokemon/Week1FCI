@@ -18,16 +18,14 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://facebook.com/profile">
-        My Website
+      <Link color="inherit" href="https://facebook.com/profile" target="_blank">
+        Hieu Nghia Phan
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
 }
-
-// TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
@@ -120,7 +118,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link component={RouterLink} to="signup" variant="body2">
+                <Link component={RouterLink} to="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

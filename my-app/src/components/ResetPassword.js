@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-import { Link as RouterLink} from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Lock from '@mui/icons-material/Lock';
@@ -18,8 +18,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://facebook.com/profile">
-        Your Website
+      <Link color="inherit" href="https://facebook.com/profile" target="_blank">
+        Hieu Nghia Phan
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -27,19 +27,17 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
 
-export default function SignIn() {
+export default function ResetPassword() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      email: data.get('email'),
       password: data.get('password'),
+      new_password: data.get('new_password'),
     });
-  };
+  }; 
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -53,60 +51,66 @@ export default function SignIn() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'grey' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'yellow' }}>
             <Lock />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Password reset
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Old Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+              
+              <Grid item xs={12}>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="New Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Confirm Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+              </Grid>
+            </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              component={RouterLink}
+              to="/login"
             >
-              Sign In
+              Reset Password
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link component={RouterLink} to="login" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

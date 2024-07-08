@@ -22,8 +22,8 @@ export default function AppNav() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+          <Typography variant="h6" component={RouterLink} to="/login" sx={{ flexGrow: 1, textDecoration: 'none'}}>
+            Welcome to the website
           </Typography>
           <Button color="inherit" component= {RouterLink} to="/login">Login</Button>
         </Toolbar>
