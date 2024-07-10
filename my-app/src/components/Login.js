@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -30,14 +31,36 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
+  const [email, password, setEmail, setPassword] = useState('')
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+
+    const response = await fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password })
     });
-  };
+
+    if (response.ok) {
+      alert("User login succesfully")
+      setEmail('')
+      setPassword('')
+    } else {
+      alert("User failed to login")
+    }
+
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -66,6 +89,7 @@ export default function SignIn() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              value={email}
               autoFocus
             />
             <TextField
@@ -77,6 +101,7 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

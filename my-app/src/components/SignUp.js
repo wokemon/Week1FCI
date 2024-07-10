@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -30,14 +31,38 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
+  const [email, password, firstName, lastName, setEmail, setPassword, setFirstName, setLastName] = useState('')
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+
+    const response = await fetch('/login/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ firstName, lastName, email, password })
     });
-  };
+
+    if (response.ok) {
+      alert("User added succesfully")
+      setFirstName('')
+      setLastName('')
+      setEmail('')
+      setPassword('')
+    } else {
+      alert("Failed to add user")
+    }
+
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -68,6 +93,7 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  value={firstName}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -78,6 +104,7 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  value={lastName}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -88,6 +115,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={email}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -99,6 +127,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  value={password}
                 />
               </Grid>
               <Grid item xs={12}>
