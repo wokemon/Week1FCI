@@ -31,15 +31,8 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
-  const [email, password, setEmail, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -90,6 +83,7 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               value={email}
+              onChange={(e) => setEmail(e.target.value)}
               autoFocus
             />
             <TextField
@@ -102,6 +96,7 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
               value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

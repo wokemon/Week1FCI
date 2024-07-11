@@ -34,11 +34,10 @@ export default function SignUp() {
   const [password, setPassword] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  console.log(firstName)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    
     const response = await fetch('/login/signup', {
       method: 'POST',
       headers: {
@@ -125,7 +124,7 @@ export default function SignUp() {
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
+                  autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />

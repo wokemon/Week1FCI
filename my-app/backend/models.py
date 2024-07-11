@@ -4,13 +4,13 @@ class User(db.Model):
     __tablename__ = "user"
     
     id = db.Column(db.Integer, primary_key=True)
-    firstname = db.Column(db.String(80), nullable=False)
-    lastname = db.Column(db.String(80), nullable=False)
-    email = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(100), unique=True, nullable=False)
+    FirstName = db.Column(db.String(80), nullable=False)
+    LastName = db.Column(db.String(80), nullable=False)
+    Email = db.Column(db.String(80), unique=True, nullable=False)
+    Password = db.Column(db.String(100), unique=True, nullable=False)
     
     def __init__(self, first_name, last_name, email, password):
-        self.firstname = first_name
-        self.lastname = last_name
-        self.email = email
-        self.password = password
+        self.FirstName = first_name
+        self.LastName = last_name
+        self.Email = email
+        self.Password = password
