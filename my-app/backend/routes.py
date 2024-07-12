@@ -1,15 +1,6 @@
 from flask import jsonify, current_app as app, request
 from .models import User, db
 
-# @app.route('/')
-# def index():
-#     return jsonify({"message": "Hello from Flask!"})
-
-# @app.route('/api/users', methods=['GET'])
-# def get_users():
-#     users = User.query.all()
-#     return jsonify([user.name for user in users])
-
 @app.route('/login/signup', methods=['POST'])
 def login():
     data = request.get_json()
